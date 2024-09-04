@@ -20,13 +20,13 @@ const isHandOneWinner = (handOne, handTwo) =>
 const getHandShapeNameFromNumber = (number) => {
   switch (number) {
     case 0:
-      return "Rock";
+      return "🪨 Rock";
     case 1:
-      return "Paper";
+      return "📜 Paper";
     case 2:
-      return "Scissors";
+      return "💇 Scissors";
     default:
-      return "None";
+      return "🤬 None";
   }
 };
 
@@ -57,12 +57,12 @@ if (userHand > 2) {
 
 const aiHand = getRandHandShape();
 
-console.info(`AI played ${getHandShapeNameFromNumber(aiHand)}.`);
-console.info(`You played ${getHandShapeNameFromNumber(userHand)}.`);
+console.info(`🤖 AI played ${getHandShapeNameFromNumber(aiHand)}.`);
+console.info(`😉 You played ${getHandShapeNameFromNumber(userHand)}.`);
 
 if (isDraw(aiHand, userHand)) {
   console.info("\x1b[35m", "It's a draw!");
   console.info("\x1b[35m", "You both win!");
 } else if (isHandOneWinner(aiHand, userHand))
-  console.info("\x1b[31m", "AI Wins!");
-else console.info("\x1b[32m", "You Win!");
+  console.info("\x1b[31m", "🤬 AI Wins!");
+else console.info("\x1b[32m", "🥳 🎉 You Win!");
