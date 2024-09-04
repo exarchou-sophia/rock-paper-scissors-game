@@ -4,6 +4,18 @@ const { getRandNumber } = require("./helper");
 const getRandHandShape = () => getRandNumber(3);
 
 const isDraw = (choice1, choice2) => choice1 === choice2;
+const getHandShapeNameFromNumber = (number) => {
+  switch (number) {
+    case 0:
+      return "Rock";
+    case 1:
+      return "Paper";
+    case 2:
+      return "Scissors";
+    default:
+      return "None";
+  }
+};
 
 const isComputerAWinner = (choice1, choice2) =>
   (choice1 === handShape.rock && choice2 === handShape.scissors) ||
@@ -14,6 +26,7 @@ const handShape = {
   rock: 0,
   paper: 1,
   scissors: 2,
+  none: 3,
 };
 
 if (process.argv.length !== 3) {
@@ -42,10 +55,11 @@ if (userChoice > 2) {
 
 const computerChoice = getRandHandShape();
 
-console.log(`Computer played ${computerChoice}, you played ${userChoice}`);
+console.info(`Computer played ${getHandShapeNameFromNumber(computerChoice)}.`);
+console.info(`You played ${getHandShapeNameFromNumber(userChoice)}.`);
 
 if (isDraw(computerChoice, userChoice))
-  console.log("It's a draw! You both win!");
+  console.info("\x1b[35m", "It's a draw! You both win!");
 else if (isComputerAWinner(computerChoice, userChoice))
-  console.log("Computer Wins!");
-else console.log("You Win!");
+  console.info("\x1b[31m", "Computer Wins!");
+else console.info("\x1b[32m", "You Win!");
